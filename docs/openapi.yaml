@@ -11,10 +11,10 @@ info:
   title: 'Career Guidance'
 
 servers:
-  - url: http://localhost:8080/
-    description: Development
   - url: https://bromanla.ml/api/
     description: Production
+  - url: http://bromanla.local/api/
+    description: Development
 
 tags:
   - name: status
