@@ -2,6 +2,7 @@ Currently using [swagger-ui-dist 4.0.0-beta.1](https://github.com/swagger-api/sw
 
 Changes in dist/index.html:
 - uri > openapi.json
+- persistAuthorization: true *(persists authorization)*
 - added styles to hide the explorer
   *(.swagger-ui .topbar .download-url-wrapper { display: none })*
 
