@@ -1,0 +1,45 @@
+all:
+  get:
+    summary: 'Список'
+    description: 'Получение списка упражнений'
+    parameters:
+      - $ref: '../parameters/page.yaml'
+    tags:
+      - exercises
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/exercises/readAll.yaml#/200'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+byId:
+  get:
+    summary: 'По идентификатору'
+    description: 'Получение тестирования'
+    parameters:
+      - $ref: '../parameters/id.yaml'
+    tags:
+      - exercises
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/exercises/readById.yaml#/200'
+      400:
+        $ref: '../responses/exercises/readById.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

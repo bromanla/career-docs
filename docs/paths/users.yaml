@@ -1,0 +1,159 @@
+all:
+  get:
+    summary: 'Список'
+    description: 'Получение списка пользователей'
+    tags:
+      - users
+    security:
+      - BearerAuth: []
+    parameters:
+      - $ref: '../parameters/page.yaml'
+    responses:
+      200:
+        $ref: '../responses/users/readAll.yaml#/200'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  post:
+    summary: 'Создание пользователя'
+    description: 'Только для администраторов'
+    tags:
+      - users
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              login:
+                type: string
+              password:
+                type: string
+              role:
+                type: string
+                enum:
+                  - student
+                  - admin
+              classroomId:
+                type: number
+            required:
+              - login
+              - password
+              - role
+    responses:
+      200:
+        $ref: '../responses/users/create.yaml#/200'
+      400:
+        $ref: '../responses/users/create.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+
+byId:
+  get:
+    summary: 'По идентификатору'
+    description: 'Подробная информация о пользователе'
+    security:
+      - BearerAuth: []
+    parameters:
+      - $ref: '../parameters/id.yaml'
+    tags:
+      - users
+    responses:
+      200:
+        $ref: '../responses/users/readById.yaml#/200'
+      400:
+        $ref: '../responses/users/readById.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  delete:
+    summary: 'Удаление пользователя'
+    description: 'Только для администраторов'
+    security:
+      - BearerAuth: []
+    parameters:
+      - $ref: '../parameters/id.yaml'
+    tags:
+      - users
+    responses:
+      200:
+        $ref: '../responses/users/delete.yaml#/200'
+      400:
+        $ref: '../responses/users/delete.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  patch:
+    summary: 'Изменение пользователя'
+    description: 'Только для администраторов'
+    security:
+      - BearerAuth: []
+    parameters:
+      - $ref: '../parameters/id.yaml'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              login:
+                type: string
+              password:
+                type: string
+              role:
+                type: string
+                enum:
+                  - student
+                  - admin
+              classroomId:
+                type: number
+    tags:
+      - users
+    responses:
+      200:
+        $ref: '../responses/users/patch.yaml#/200'
+      400:
+        $ref: '../responses/users/patch.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

@@ -1,0 +1,29 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          scjools:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                name:
+                  type: string
+          meta:
+            type: object
+            properties:
+              totalRows:
+                type: number
+              currentRows:
+                type: number
+              totalPages:
+                type: number
+              currentPage:
+                type: number
+              perPage:
+                type: number

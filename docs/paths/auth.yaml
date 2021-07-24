@@ -1,0 +1,88 @@
+login:
+  post:
+    summary: 'Авторизация'
+    description: 'Получение access, refresh токенов'
+    tags:
+      - auth
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              login:
+                type: string
+              password:
+                type: string
+            required:
+              - login
+              - password
+    responses:
+      200:
+        $ref: '../responses/auth/login.yaml#/200'
+      400:
+        $ref: '../responses/auth/login.yaml#/400'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+refresh:
+  post:
+    description: 'Получение новой пары токенов'
+    tags:
+      - auth
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              refresh:
+                type: string
+            required:
+              - refresh
+    responses:
+      200:
+        $ref: '../responses/auth/refresh.yaml#/200'
+      400:
+        $ref: '../responses/auth/refresh.yaml#/400'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+logout:
+  post:
+    summary: 'Выход'
+    description: 'Удалить refresh токен из базы данных'
+    tags:
+      - auth
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              refresh:
+                type: string
+            required:
+              - refresh
+    responses:
+      200:
+        $ref: '../responses/auth/logout.yaml#/200'
+      400:
+        $ref: '../responses/entity.yaml#/400_JSON_PARSE'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

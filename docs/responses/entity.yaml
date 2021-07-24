@@ -1,0 +1,47 @@
+400_JSON_PARSE:
+  description: 'Ошибка разбора JSON'
+  content:
+    application/json:
+      schema:
+        allOf:
+          - $ref: 'error-schemes.yaml#/400'
+          - type: object
+            properties:
+              message:
+                type: string
+                example: 'Unexpected <details>'
+
+401_JWT:
+  description: 'Авторизация JWT не пройдена'
+  content:
+    application/json:
+      schema:
+        $ref: 'error-schemes.yaml#/401'
+
+403_FORBIDDEN:
+  description: 'Нет прав на доступ'
+  content:
+    application/json:
+      schema:
+        $ref: 'error-schemes.yaml#/403'
+
+422_VALIDATION:
+  description: 'Ошибка валидации'
+  content:
+    application/json:
+      schema:
+        $ref: 'error-schemes.yaml#/422'
+
+429_TO_MANY_REQUESTS:
+  description: 'Превышен лимит запросов'
+  content:
+    application/json:
+      schema:
+        $ref: 'error-schemes.yaml#/429'
+
+500_INTERNAL_SERVER:
+  description: 'Серверная ошибка'
+  content:
+    application/json:
+      schema:
+        $ref: 'error-schemes.yaml#/500'

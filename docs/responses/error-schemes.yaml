@@ -1,0 +1,84 @@
+400:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 400
+    subcode:
+      type: number
+      example: 10
+    error:
+      type: string
+      example: Bad Request
+    message:
+      type: string
+      example: '<error_detail>'
+401:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 401
+    error:
+      type: string
+      example: Unauthorized
+    message:
+      type: string
+      example: '<error_detail>'
+403:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 403
+    error:
+      type: string
+      example: Forbidden
+    message:
+      type: string
+      example: No access rights to content
+404:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 404
+    error:
+      type: string
+      example: Not Found
+    message:
+      type: string
+      example: '<error_detail>'
+422:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 422
+    error:
+      type: string
+      example: Unprocessable Entity
+    message:
+      type: string
+      example: '<error_detail>'
+429:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 429
+    error:
+      type: string
+      example: Too Many Requests
+    message:
+      type: string
+      example: Try again later
+500:
+  type: object
+  properties:
+    code:
+      type: number
+      example: 500
+    error:
+      type: string
+      example: Internal Server Error

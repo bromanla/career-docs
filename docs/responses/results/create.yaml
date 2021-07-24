@@ -1,0 +1,41 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          id:
+            type: number
+          man:
+            type: number
+          nature:
+            type: number
+          technics:
+            type: number
+          sign:
+            type: number
+          artistic:
+            type: number
+          exerciseId:
+            type: number
+400:
+  description: 'Ошибка разбора JSON | Упражнение не найдено'
+  content:
+    application/json:
+      schema:
+        oneOf:
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                message:
+                  example: 'Unexpected <details>'
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                subcode:
+                  example: 43
+                message:
+                  example: 'Exercise not found'

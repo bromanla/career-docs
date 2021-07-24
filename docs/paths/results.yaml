@@ -1,0 +1,92 @@
+all:
+  get:
+    summary: 'Список'
+    description: 'Получение результатов аккаунта. Только для студентов'
+    tags:
+      - results
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/results/readAll.yaml#/200'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  post:
+    summary: 'Добавление результатов упражнения'
+    description: 'Только для студентов'
+    security:
+      - BearerAuth: []
+    tags:
+      - results
+    requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                exerciseId:
+                  type: number
+                man:
+                  type: number
+                nature:
+                  type: number
+                technics:
+                  type: number
+                sign:
+                  type: number
+                artistic:
+                  type: number
+              required:
+                - exerciseId
+                - man
+                - nature
+                - technics
+                - sign
+                - artistic
+    responses:
+      200:
+        $ref: '../responses/results/create.yaml#/200'
+      400:
+        $ref: '../responses/results/create.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+diagram:
+  get:
+    summary: 'Данные для диаграммы'
+    description: 'Только для студентов'
+    tags:
+      - results
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/results/diagram.yaml#/200'
+      400:
+        $ref: '../responses/results/diagram.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

@@ -1,0 +1,68 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          id:
+            type: number
+          name:
+            type: string
+          description:
+              type: string
+          questions:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                question:
+                  type: string
+                image:
+                  type: string
+                  nullable: true
+                exerciseId:
+                  type: number
+                answers:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: number
+                      answer:
+                        type: string
+                      type:
+                        type: string
+                        enum:
+                          - text
+                          - emoji
+                          - image
+                      questionId:
+                        type: number
+                      man:
+                        type: number
+                      nature:
+                        type: number
+                      technics:
+                        type: number
+                      sign:
+                        type: number
+                      artistic:
+                        type: number
+
+400:
+  description: 'Упражнение не найдено'
+  content:
+    application/json:
+      schema:
+        allOf:
+          - $ref: '../error-schemes.yaml#/400'
+          - type: object
+            properties:
+              subcode:
+                example: 33
+              message:
+                example: 'Exercise is not found'

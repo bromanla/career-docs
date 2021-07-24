@@ -1,0 +1,43 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          id:
+            type: number
+          className:
+            type: string
+          school:
+              type: object
+              properties:
+                id:
+                  type: number
+                name:
+                  type: string
+          users:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                login:
+                  type: string
+                role:
+                  type: string
+
+400:
+  description: 'Класс не найден'
+  content:
+    application/json:
+      schema:
+        allOf:
+          - $ref: '../error-schemes.yaml#/400'
+          - type: object
+            properties:
+              subcode:
+                example: 31
+              message:
+                example: 'Classroom is not found'

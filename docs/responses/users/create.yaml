@@ -1,0 +1,50 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          id:
+            type: number
+          login:
+            type: string
+          role:
+            type: string
+          classroom:
+            type: object
+            nullable: true
+            properties:
+              id:
+                type: number
+              className:
+                type: string
+
+400:
+  description: 'Ошибка разбора JSON | Класс не найден | Логин занят'
+  content:
+    application/json:
+      schema:
+        oneOf:
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                message:
+                  example: 'Unexpected <details>'
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                subcode:
+                  example: 44
+                message:
+                  example: 'Login already exists'
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                subcode:
+                  example: 41
+                message:
+                  example: 'Classroom is not found'

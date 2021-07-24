@@ -1,0 +1,12 @@
+health:
+  get:
+    summary: 'Состояние'
+    tags:
+      - status
+    responses:
+      200:
+        $ref: '../responses/status/health.yaml#/200'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

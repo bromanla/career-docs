@@ -1,0 +1,34 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          userId:
+            type: number
+          man:
+            type: number
+          nature:
+            type: number
+          technics:
+            type: number
+          sign:
+            type: number
+          artistic:
+            type: number
+          all:
+            type: number
+400:
+  description: 'Результаты тестирований не найдены'
+  content:
+    application/json:
+      schema:
+        allOf:
+          - $ref: '../error-schemes.yaml#/400'
+          - type: object
+            properties:
+              subcode:
+                example: 34
+              message:
+                example: 'Results not found'

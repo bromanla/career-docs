@@ -1,0 +1,32 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          jwt:
+            type: string
+          token:
+            type: string
+
+400:
+  description: 'Ошибка разбора JSON | Refresh не найден в базе данных'
+  content:
+    application/json:
+      schema:
+        oneOf:
+        - allOf:
+          - $ref: '../error-schemes.yaml#/400'
+          - type: object
+            properties:
+              message:
+                example: 'Unexpected <details>'
+        - allOf:
+          - $ref: '../error-schemes.yaml#/400'
+          - type: object
+            properties:
+              subcode:
+                example: 21
+              message:
+                example: 'Refresh token not found'

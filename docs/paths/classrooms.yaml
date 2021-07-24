@@ -1,0 +1,148 @@
+all:
+  get:
+    summary: 'Список'
+    description: 'Получение списка классов'
+    parameters:
+      - $ref: '../parameters/page.yaml'
+    tags:
+      - classrooms
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/classrooms/readAll.yaml#/200'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  post:
+    summary: 'Создание класса'
+    description: 'Только для администраторов'
+    tags:
+      - classrooms
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              className:
+                type: string
+              schoolId:
+                type: number
+            required:
+              - className
+              - schoolId
+    responses:
+      200:
+        $ref: '../responses/classrooms/create.yaml#/200'
+      400:
+        $ref: '../responses/classrooms/create.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+
+byId:
+  get:
+    summary: 'По идентификатору'
+    description: 'Подробная информация о классе'
+    parameters:
+      - $ref: '../parameters/id.yaml'
+    tags:
+      - classrooms
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/classrooms/readById.yaml#/200'
+      400:
+        $ref: '../responses/classrooms/readById.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  delete:
+    summary: 'Удаление класса'
+    description: 'Только для администраторов'
+    tags:
+      - classrooms
+    security:
+    - BearerAuth: []
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: number
+    responses:
+      200:
+        $ref: '../responses/classrooms/delete.yaml#/200'
+      400:
+        $ref: '../responses/classrooms/delete.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+  patch:
+    summary: 'Изменение класса'
+    description: 'Только для администраторов'
+    tags:
+      - classrooms
+    security:
+      - BearerAuth: []
+    parameters:
+      - $ref: '../parameters/id.yaml'
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              className:
+                type: string
+              schoolId:
+                type: number
+    responses:
+      200:
+        $ref: '../responses/classrooms/patch.yaml#/200'
+      400:
+        $ref: '../responses/classrooms/patch.yaml#/400'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      422:
+        $ref: '../responses/entity.yaml#/422_VALIDATION'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

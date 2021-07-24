@@ -1,0 +1,10 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+            example: 'Ok'

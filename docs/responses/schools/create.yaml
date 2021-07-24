@@ -1,0 +1,11 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          id:
+            type: number
+          name:
+            type: string

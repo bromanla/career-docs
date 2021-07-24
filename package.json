@@ -1,0 +1,16 @@
+{
+  "name": "career_docs",
+  "version": "1.1.2",
+  "description": "Documentation for career_server",
+  "main": "index.js",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Roman <bromanla.json@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "swagger-parser": "^10.0.2"
+  }
+}

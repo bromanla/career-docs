@@ -1,0 +1,32 @@
+200:
+  description: 'Ок'
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          id:
+            type: number
+          name:
+            type: string
+
+400:
+  description: 'Ошибка разбора JSON | Школа не найдена'
+  content:
+    application/json:
+      schema:
+        oneOf:
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                message:
+                  example: 'Unexpected <details>'
+          - allOf:
+            - $ref: '../error-schemes.yaml#/400'
+            - type: object
+              properties:
+                subcode:
+                  example: 42
+                message:
+                  example: 'School is not found'

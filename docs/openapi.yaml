@@ -1,0 +1,79 @@
+openapi: 3.0.3
+
+info:
+  description: '
+    Для подтвержения доступа к методам неоходимо предоставить JWT.
+    Передается в заголовках: `Authorization: Bearer <JWT>`
+    <br/></br>
+    Payload: `{ id: number, role: enum[admin, student] }`
+  '
+  version: 1.1.2
+  title: 'Career Guidance'
+
+servers:
+  - url: http://localhost:8080/
+    description: Development
+  - url: https://bromanla.ml/api/
+    description: Production
+
+tags:
+  - name: status
+  - name: auth
+  - name: users
+  - name: classrooms
+  - name: schools
+  - name: exercises
+  - name: results
+  - name: settings
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+
+paths:
+  /health/:
+    $ref: 'paths/status.yaml#/health'
+
+  /auth/login/:
+    $ref: 'paths/auth.yaml#/login'
+
+  /auth/refresh/:
+    $ref: 'paths/auth.yaml#/refresh'
+
+  /auth/logout/:
+    $ref: 'paths/auth.yaml#/logout'
+
+  /users/:
+    $ref: 'paths/users.yaml#/all'
+
+  /users/{id}:
+    $ref: 'paths/users.yaml#/byId'
+
+  /classrooms/:
+    $ref: 'paths/classrooms.yaml#/all'
+
+  /classrooms/{id}:
+    $ref: 'paths/classrooms.yaml#/byId'
+
+  /schools/:
+    $ref: 'paths/schools.yaml#/all'
+
+  /schools/{id}:
+    $ref: 'paths/schools.yaml#/byId'
+
+  /exercises/:
+    $ref: 'paths/exercises.yaml#/all'
+
+  /exercises/{id}:
+    $ref: 'paths/exercises.yaml#/byId'
+
+  /results/:
+    $ref: 'paths/results.yaml#/all'
+
+  /results/diagram/:
+    $ref: 'paths/results.yaml#/diagram'
+
+  /settings/devices/:
+    $ref: 'paths/settings.yaml#/devices'
