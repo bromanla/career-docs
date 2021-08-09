@@ -6,7 +6,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "start": "node index.js"
+    "build": "node index.js"
   },
   "author": "Roman <bromanla.json@gmail.com>",
   "license": "ISC",

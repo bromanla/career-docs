@@ -1,7 +1,7 @@
 all:
   get:
-    summary: 'Список'
-    description: 'Получение результатов аккаунта. Только для студентов'
+    summary: 'Список результатов'
+    description: 'Только для студентов'
     tags:
       - results
     security:

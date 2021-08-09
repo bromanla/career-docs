@@ -9,8 +9,13 @@
             type: number
           className:
             type: string
-          schoolId:
-            type: number
+          school:
+            type: object
+            properties:
+              id:
+                type: number
+              name:
+                type: string
 
 400:
   description: 'Ошибка разбора JSON | Класс не найден'

@@ -1,7 +1,7 @@
 all:
   get:
-    summary: 'Список'
-    description: 'Получение списка школ'
+    summary: 'Список школ'
+    description: 'Только для администраторов'
     security:
       - BearerAuth: []
     parameters:
@@ -58,7 +58,7 @@ all:
 byId:
   get:
     summary: 'По идентификатору'
-    description: 'Подробная информация о школе'
+    description: 'Только для администраторов'
     security:
       - BearerAuth: []
     parameters:

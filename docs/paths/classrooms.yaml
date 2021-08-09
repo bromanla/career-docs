@@ -1,7 +1,7 @@
 all:
   get:
-    summary: 'Список'
-    description: 'Получение списка классов'
+    summary: 'Список пользователей'
+    description: 'Только для администраторов'
     parameters:
       - $ref: '../parameters/page.yaml'
     tags:
@@ -61,7 +61,7 @@ all:
 byId:
   get:
     summary: 'По идентификатору'
-    description: 'Подробная информация о классе'
+    description: 'Только для администраторов'
     parameters:
       - $ref: '../parameters/id.yaml'
     tags:

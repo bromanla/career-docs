@@ -1,7 +1,7 @@
 all:
   get:
-    summary: 'Список'
-    description: 'Получение списка пользователей'
+    summary: 'Список пользователей'
+    description: 'Только для администраторов'
     tags:
       - users
     security:
@@ -69,7 +69,7 @@ all:
 byId:
   get:
     summary: 'По идентификатору'
-    description: 'Подробная информация о пользователе'
+    description: 'Только для администраторов'
     security:
       - BearerAuth: []
     parameters:

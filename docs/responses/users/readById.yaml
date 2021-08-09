@@ -26,6 +26,26 @@
                     type: string
                   name:
                     type: string
+          results:
+            nullable: true
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                man:
+                  type: number
+                nature:
+                  type: number
+                technics:
+                  type: number
+                sign:
+                  type: number
+                artistic:
+                  type: number
+                exerciseId:
+                  type: number
 
 400:
   description: 'Пользователь не найден'
