@@ -90,3 +90,23 @@ diagram:
         $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
       500:
         $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'
+
+unloading:
+  get:
+    summary: 'Данные для xlsx'
+    description: 'Только для администраторов'
+    tags:
+      - results
+    security:
+      - BearerAuth: []
+    responses:
+      200:
+        $ref: '../responses/results/unloading.yaml#/200'
+      401:
+        $ref: '../responses/entity.yaml#/401_JWT'
+      403:
+        $ref: '../responses/entity.yaml#/403_FORBIDDEN'
+      429:
+        $ref: '../responses/entity.yaml#/429_TO_MANY_REQUESTS'
+      500:
+        $ref: '../responses/entity.yaml#/500_INTERNAL_SERVER'

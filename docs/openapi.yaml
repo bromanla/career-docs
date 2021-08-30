@@ -7,7 +7,7 @@ info:
     <br/></br>
     Payload: `{ id: number, role: enum[admin, student] }`
   '
-  version: 1.1.3
+  version: 1.1.4
   title: 'Career Guidance'
 
 servers:
@@ -74,6 +74,9 @@ paths:
 
   /results/diagram/:
     $ref: 'paths/results.yaml#/diagram'
+
+  /results/unloading/:
+    $ref: 'paths/results.yaml#/unloading'
 
   /settings/devices/:
     $ref: 'paths/settings.yaml#/devices'
